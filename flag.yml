@@ -1,0 +1,22 @@
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Base64 encode the FLAG secret
+        run: |
+              echo ${{ steps.string.outputs.lowercase }}
+          FLAG_ONE="${{ secrets.FLAG1.lowercase }}"
+          FLAG_TWO="${{ secrets.FLAG2.lowercase }}"
+          echo "$FLAG_ONE" 
+          echo "$FLAG_TWO" 
+
+
